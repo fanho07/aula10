@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        function esperarSegundos(segundos) {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    if (Math.random() < 0.5) { // 50% de chance de erro
+                        reject("Erro simulado!");
+                    } else {
+                        resolve(`Esperei ${segundos} segundos`);
+                    }
+                }, segundos * 1000);
+            });
+        }
+
+        // Teste
+        console.log("Iniciando teste...");
+        esperarSegundos(2)
+            .then(mensagem => console.log("Sucesso:", mensagem))
+            .catch(erro => console.error("Falha:", erro));
+
+
+    </script>
+
+</body>
+
+</html>
